@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "repository": "NoContext-Keys",
+  "generatedAt": null,
+  "sections": {
+    "3d": {"file": "keys/3-day.json", "activeCount": 0},
+    "7d": {"file": "keys/1-week.json", "activeCount": 0},
+    "lifetime": {"file": "keys/lifetime.json", "activeCount": 0}
+  }
+}
