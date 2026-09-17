@@ -1,5 +1,15 @@
 {
   "version": 1,
   "duration": "lifetime",
-  "keys": []
+  "algorithm": "sha256",
+  "keys": [
+    {
+      "hash": "22c734e21a3c46f15cef61b67e49b644cbe9e2fac5237d5ecd95a426fb057431",
+      "prefix": "NC-58C25D36",
+      "product": "NoContext External",
+      "status": "active",
+      "createdAt": "2026-09-17T16:46:51.236709+00:00",
+      "expiresAt": "9999-12-31T23:59:59+00:00"
+    }
+  ]
 }

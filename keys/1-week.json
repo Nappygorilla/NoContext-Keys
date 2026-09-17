@@ -1,5 +1,6 @@
 {
   "version": 1,
   "duration": "7d",
+  "algorithm": "sha256",
   "keys": []
 }
