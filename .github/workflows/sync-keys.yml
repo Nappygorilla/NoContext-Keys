@@ -2,6 +2,9 @@ name: Sync NoContext license keys
 
 on:
   workflow_dispatch:
+  push:
+    paths-ignore:
+      - "keys/**"
   schedule:
     - cron: "*/5 * * * *"
 
