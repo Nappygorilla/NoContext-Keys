@@ -2,14 +2,5 @@
   "version": 1,
   "duration": "3d",
   "algorithm": "sha256",
-  "keys": [
-    {
-      "hash": "741833ec4bacc6f3d1f76b8799a9c02f5da4ef339ec4acdffd6068b395505b75",
-      "prefix": "NC-7F3A-92K",
-      "product": "NoContext External",
-      "status": "active",
-      "createdAt": "2026-09-17T13:01:25.906027+00:00",
-      "expiresAt": "2026-09-20T13:01:25.898567+00:00"
-    }
-  ]
+  "keys": []
 }

@@ -5,7 +5,7 @@
   "sections": {
     "3d": {
       "file": "keys/3-day.json",
-      "activeCount": 1
+      "activeCount": 0
     },
     "7d": {
       "file": "keys/1-week.json",
