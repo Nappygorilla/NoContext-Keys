@@ -1,0 +1,76 @@
+name: Sync NoContext license keys
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout key repository
+        uses: actions/checkout@v4
+
+      - name: Fetch active keys from NoContext
+        env:
+          INDEX_URL: https://nocontext.onrender.com/api/licenses/public-index
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          with urllib.request.urlopen(os.environ["INDEX_URL"], timeout=30) as response:
+              data = json.loads(response.read().decode("utf-8"))
+
+          sections = data.get("sections", {})
+          files = {
+              "3d": "keys/3-day.json",
+              "7d": "keys/1-week.json",
+              "lifetime": "keys/lifetime.json",
+          }
+
+          for duration, path in files.items():
+              payload = {
+                  "version": int(data.get("version", 1)),
+                  "duration": duration,
+                  "algorithm": data.get("algorithm", "sha256"),
+                  "keys": sections.get(duration, []),
+              }
+              with open(path, "w", encoding="utf-8") as handle:
+                  json.dump(payload, handle, indent=2)
+                  handle.write("\n")
+
+          index = {
+              "version": int(data.get("version", 1)),
+              "repository": "NoContext-Keys",
+              "algorithm": data.get("algorithm", "sha256"),
+              "sections": {
+                  duration: {
+                      "file": path,
+                      "activeCount": len(sections.get(duration, [])),
+                  }
+                  for duration, path in files.items()
+              },
+          }
+          with open("keys/index.json", "w", encoding="utf-8") as handle:
+              json.dump(index, handle, indent=2)
+              handle.write("\n")
+          PY
+
+      - name: Commit changed key index
+        run: |
+          if git diff --quiet -- keys; then
+            echo "No key changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add keys/
+          git commit -m "Sync active NoContext license keys"
+          git push
