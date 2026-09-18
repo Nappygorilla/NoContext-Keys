@@ -3,19 +3,19 @@
   "duration": "lifetime",
   "keys": [
     {
-      "id": "NC-090DC9B5",
+      "id": "NC-090DC9B5-4C6B8CE9-183B6B2E-A9C85EFF",
       "product": "NoContext External",
       "status": "active",
       "expiresAt": "9999-12-31T23:59:59+00:00"
     },
     {
-      "id": "NC-435ED141",
+      "id": "NC-435ED141-B5396D87-FCF641D7-ED854D53",
       "product": "NoContext External",
       "status": "active",
       "expiresAt": "9999-12-31T23:59:59+00:00"
     },
     {
-      "id": "NC-A56A3081",
+      "id": "NC-A56A3081-8D8D4FDA-66793BFA-734307D1",
       "product": "NoContext External",
       "status": "active",
       "expiresAt": "9999-12-31T23:59:59+00:00"
